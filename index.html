@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <input type="text" id="videoUrl" placeholder="Enter video URL">
+        <button onclick="playFullScreen()">Play Full Screen</button>
+    </div>
+    <div>
+        <video id="videoPlayer" class="video-js vjs-default-skin" controls>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+</body>
+  <style>
+    body {
+    text-align: center;
+    padding: 10px;
+}
 
+input {
+    margin-bottom: 10px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+  </style>
+  <script>
+    function playFullScreen() {
+    var videoUrl = document.getElementById("videoUrl").value;
+    var videoPlayer = videojs("videoPlayer");
+    var videoSource = document.createElement('source');
+    
+    videoSource.src = videoUrl;
+    videoSource.type = 'video/mp4';
+    
+    videoPlayer.src(videoSource);
+    videoPlayer.requestFullscreen(); // Enter full screen mode
+}
+  </script>
+</html>
